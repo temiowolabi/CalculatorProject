@@ -12,6 +12,7 @@ private:
 
 	T* data;
 	int topNum;
+	double result;
 public:
 	// pushes a new operand onto the stack
 	void push(T operand);
@@ -38,75 +39,11 @@ public:
 template <class T>
 void RPNCalculator<T>::add()
 {
-	if (values() >= 2)
-	{
-		push(pop() + pop());
-	}
-}
+	double a;
+	double b;
 
+	result = a + b;
 
-template <class T>
-void RPNCalculator<T>::subtract()
-{
-	if (values() >= 2)
-	{
-		push(0 - pop() + pop());
-	}
-}
+	return result;
+};
 
-
-template <class T>
-void RPNCalculator<T>::multiply()
-{
-	if (values() >= 2)
-	{
-		push(pop() * pop());
-	}
-}
-
-
-template <class T>
-void RPNCalculator<T>::divide()
-{
-	if (values() >= 2)
-	{
-		push(1 / pop() * pop());
-	}
-}
-
-
-template <class T>
-bool RPNCalculator<T>::isEmpty()
-{
-	return topNum == 0;
-}
-
-
-template <class T>
-void RPNCalculator<T>::clear()
-{
-	topNum = 0;
-}
-
-
-template <class T>
-T RPNCalculator<T>::value() {
-	if (topNum > 0)
-	{
-		return data[topNum - 1];
-	}
-
-	return 0;
-}
-
-
-template <class T>
-T RPNCalculator<T>::pop()
-{
-	T popped_element = st[top];
-
-	topNum--;
-
-	return popped_element;
-
-}
