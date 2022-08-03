@@ -9,9 +9,6 @@ void menu() {
 	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
 	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
 
-	cout << "Input: " << endl;
-	cin >> input;
-
 };
 
 
@@ -24,17 +21,30 @@ void addFunction() {
 
 void addFunction() {
 
-	double input;
+	double a;
+	double b;
 
-	cin >> input;
-	RPNCalculator<int> add;
+	cout << "Input :" << endl;
+	cin >> a;
+	cout << "Input :" << endl;
+	cin >> b;
+	//RPNCalculator<int> add;
+
+
+
+	RPNCalculator<double> addFunction;
+	addFunction.add(a, b);
+	//addFunction.push();
 }
 
 
 int main() {
-	RPNCalculator<int> add;
+	//RPNCalculator<double> addFunction;
+	//addFunction.add();
 	//RPNCalculator<T>::add;
 
+	menu();
+	addFunction();
 
 	
 	return 0;
