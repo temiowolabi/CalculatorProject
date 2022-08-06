@@ -92,6 +92,36 @@ void multiplyFunction() {
 }
 
 
+bool menuStuff() {
+
+	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
+	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
+
+	string option;
+	string input;
+
+	cout << "Option :" << endl;
+	cin >> option;
+
+	if (option == "q" || option == "Q") {
+		exit(0);
+	}
+	else if (option == "+") {
+		cout << "Addition has been selected" << endl;
+		addFunction();
+	}
+	else if (option == "-")
+	{
+		cout << "Subtraction has been selected" << endl;
+		minusFunction();
+	}
+	else if (option == "*")
+	{
+		cout << "Multiplication has been selected" << endl;
+		multiplyFunction();
+	}
+
+}
 
 
 
