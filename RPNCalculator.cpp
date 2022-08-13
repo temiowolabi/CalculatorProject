@@ -52,8 +52,11 @@ void addFunction() {
 
 	//RPNCalculator<double> addFunction;
 	//double(*pointer)(double, double) = addFunction;
-	addFunction.add(a, b);
-	cout << addFunction.display() << endl;
+	addFunction.push(7);
+	addFunction.push(a);
+	addFunction.push(b);
+	//addFunction.add();
+	cout << addFunction.add() << endl;
 	//addFunction.push();
 }
 

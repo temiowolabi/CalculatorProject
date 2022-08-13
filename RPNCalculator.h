@@ -34,12 +34,13 @@ private:
 	T* a;
 	T* b;
 public:
+	RPNCalculator(int i = 33);
 	// pushes a new operand onto the stack
-	void push(float f);
+	bool push(T operand);
 
 	bool isFull();
 	// binary operators:
-	void add(T a, T b);
+	double add();
 	void subtract(T a, T b);
 	void multiply(T a, T b);
 	void divide(T a, T b);
@@ -58,6 +59,9 @@ public:
 
 	//double result();
 	double display();
+
+	//Destructor
+	~RPNCalculator();
 };
 
 /*template<class T> struct Node {
@@ -66,20 +70,35 @@ public:
 	Node() :next(nullptr) {};
 	Node(T t) : value(t), next(nullptr) {}
 };
-
+*/
 
 template <class T>
-bool RPNCalculator<T>::push(T operand) {
+RPNCalculator<T>::RPNCalculator(int i) {
+	data = new T[i];
+	capacity = i;
+	topNum = 0;
+}
+
+template <class T>
+RPNCalculator<T>::~RPNCalculator()
+{
+	topNum = 0;
+	capacity = 0;
+	delete[] data;
+}
+
+template <class T>
+bool RPNCalculator<T>::push(T result) {
 
 	if (topNum != capacity)
 	{
-		data[topNum] = operand;
+		data[topNum] = result;
 		topNum++;
 		return true;
 	}
 	return false;
 }
-*/
+
 
 template <class T>
 bool RPNCalculator<T>::isFull() {
@@ -94,14 +113,29 @@ bool RPNCalculator<T>::isFull() {
 
 
 
+template<class T>
+T  RPNCalculator<T>::pop() {
+	if (topNum > 0)
+	{
+		double num = data[topNum];
+		topNum--;
+		return num;
+	}
+	return topNum;
+}
+
 template <class T>
-void RPNCalculator<T>::add(T a, T b)
+double RPNCalculator<T>::add()
 {
-
-	a = pop();
-	b = pop();
-
+	double g = pop();
+	double a = pop();
+	double b = pop();
+	
 	result = a + b;
+	
+	//push(6);
+
+	return result;
 };
 
 
@@ -156,20 +190,13 @@ void RPNCalculator<T>::square() {
 	//only square positive numbers
 }
 
-template<class T>
-T  RPNCalculator<T>::pop() {
-	if (topNum > 0)
-	{
-		topNum--;
-	}
-	return topNum;
-}
+
 
 template<class T>
 double RPNCalculator<T>::display() {
 
 	double a = pop();
-	//push(a);
+	push(a);
 	//cout << a;
 
 	return a;
