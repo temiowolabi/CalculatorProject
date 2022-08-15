@@ -8,7 +8,7 @@ using namespace std;
 
 
 bool operations(const string& option) {
-	string array[] = { "+", "-", "*", "/", "^"};
+	string array[] = { "+", "-", "*", "/", "n"};
 	for (int i = 0; i < 5; i++) {
 		if (option == array[i]) {
 			return true;
@@ -28,7 +28,14 @@ bool menuStuff() {
 	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
 		while (true) {
 	functions.print();
+
+	if (functions.value() == 0)
+	{
+		cout << "X >";
+	}
+	else{
 	cout << functions.value() << " > ";
+	}
 		cin>> input;
 
 
@@ -61,6 +68,13 @@ bool menuStuff() {
 		else if (input == "*")
 		{
 			functions.multiply();
+			//cout << "Multiplication has been selected" << endl;
+			//multiplyFunction();
+
+		}
+		else if (input == "n")
+		{
+			functions.negate();
 			//cout << "Multiplication has been selected" << endl;
 			//multiplyFunction();
 		}

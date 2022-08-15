@@ -35,7 +35,7 @@ private:
 	T* a;
 	T* b;
 public:
-	RPNCalculator(int i = 33);
+	RPNCalculator(int i = 2);
 	// pushes a new operand onto the stack
 	bool push(T operand);
 
@@ -154,7 +154,7 @@ void RPNCalculator<T>::subtract()
 	double b = value();
 	pop();
 
-	result = a - b;
+	result = b - a;
 
 	push(result);
 };
@@ -205,11 +205,35 @@ template<class T>
 void RPNCalculator<T>::square() {
 	//only square positive numbers
 
-	double toBeSquared;
-	double a = pop() ;
+	double a = value();
+	pop();
+	pop();
+
+	double result = a * a;
+	push(result);
 
 
 }
+
+
+template<class T>
+void RPNCalculator<T>::negate() {
+	//only square positive numbers
+
+	double result = value(), a = value();
+	pop();
+	pop();
+
+	if (a > 0)
+	{
+		result = a * -1;
+	}
+
+	push(result);
+
+
+}
+
 
 template<class T>
 T RPNCalculator<T>::value() {
