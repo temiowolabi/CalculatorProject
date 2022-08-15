@@ -1,141 +1,83 @@
 #include "RPNCalculator.h"
 #include <iostream>
 #include <queue>
+#include <sstream>  
 #include <string>
 using namespace std;
 
-void menu() {
-	//int input;
-	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
-	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
-
-/*	RPNCalculator<string> menuStuff;
-
-	string input;
-
-	cout << "Input :" << endl;
-	cin >> input;
-
-	cout << menuStuff.menuOptions(input) << endl;*/
 
 
-	
-};
-
-
-
-
-/*
-void addFunction() {
-
-	RPNCalculator<T>::add;
-}; */
-
-
-void addFunction() {
-
-	double a;
-	double b;
-
-	RPNCalculator<double> addFunction;
-
-	//RPNCalculator<double>(*funcPtr)(double, double) = addFunction;
-
-	//RPNCalculator<double> addFunction;
-
-	cout << "Input :" << endl;
-	cin >> a;
-	cout << "Input :" << endl;
-	cin >> b;
-	//RPNCalculator<int> add;
-
-
-	//RPNCalculator<double> addFunction;
-	//double(*pointer)(double, double) = addFunction;
-	addFunction.push(7);
-	addFunction.push(a);
-	addFunction.push(b);
-	//addFunction.add();
-	cout << addFunction.add() << endl;
-	//addFunction.push();
-}
-
-
-void minusFunction() {
-
-	double a;
-	double b;
-
-	RPNCalculator<double> minusFunction;
-
-	cout << "Input :" << endl;
-	cin >> a;
-	cout << "Input :" << endl;
-	cin >> b;
-
-	minusFunction.subtract(a, b);
-	cout << minusFunction.display() << endl;
-}
-
-
-void multiplyFunction() {
-
-	double a;
-	double b;
-
-	RPNCalculator<double> multiplyFunction;
-
-	cout << "Input :" << endl;
-	cin >> a;
-	cout << "Input :" << endl;
-	cin >> b;
-
-	multiplyFunction.multiply(a, b);
-	cout << multiplyFunction.display() << endl;
+bool operations(const string& option) {
+	string array[] = { "+", "-", "*", "/", "^"};
+	for (int i = 0; i < 5; i++) {
+		if (option == array[i]) {
+			return true;
+		}
+		return false;
+	}
 }
 
 
 bool menuStuff() {
 
-	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
-	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
-
+	RPNCalculator<double> functions;
+	double num;	
 	string option;
 	string input;
+	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
+	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
+		while (true) {
+	functions.print();
+	cout << functions.value() << " > ";
+		cin>> input;
 
-	cout << "Option :" << endl;
-	cin >> option;
 
-	if (option == "q" || option == "Q") {
-		exit(0);
+
+
+	if (istringstream(input) >> num) {
+		functions.push(num);
 	}
-	else if (option == "+") {
-		cout << "Addition has been selected" << endl;
-		addFunction();
-	}
-	else if (option == "-")
-	{
-		cout << "Subtraction has been selected" << endl;
-		minusFunction();
-	}
-	else if (option == "*")
-	{
-		cout << "Multiplication has been selected" << endl;
-		multiplyFunction();
+	else if (operations) {
+		if (option == "q" || option == "Q") {
+			exit(0);
+		}
+		else if (option == "c" || option == "C") {
+			//clear topNum
+			//functions.print();
+			//return 0;
+		}
+		else if (input == "+") {
+			//cout << "Addition has been selected" << endl;
+			//addFunction();
+			functions.add();
+			
+		}
+		else if (input == "-")
+		{
+			//cout << "Subtraction has been selected" << endl;
+			//minusFunction();
+			functions.subtract();
+		}
+		else if (input == "*")
+		{
+			functions.multiply();
+			//cout << "Multiplication has been selected" << endl;
+			//multiplyFunction();
+		}
 	}
 
-}
+		}
+	}
+
+
+
+
 
 
 
 int main() {
 
-	//RPNCalculator<double> addFunction;
-	//addFunction.add();
-	//RPNCalculator<T>::add;
-
 	menuStuff();
-	//addFunction();
 
 	
 	return 0;

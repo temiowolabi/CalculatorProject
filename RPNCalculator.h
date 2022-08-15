@@ -14,6 +14,7 @@ function in adding operands. After searching on the internet I saw and understoo
 
 #pragma once
 #include <string>
+#include <iostream>
 using namespace std;
 
 template<class T> 
@@ -40,10 +41,10 @@ public:
 
 	bool isFull();
 	// binary operators:
-	double add();
-	void subtract(T a, T b);
-	void multiply(T a, T b);
-	void divide(T a, T b);
+	void add();
+	void subtract();
+	void multiply();
+	void divide();
 	// squares the current value
 	void square();
 	// negates, i.e. 3 becomes -3
@@ -59,6 +60,9 @@ public:
 
 	//double result();
 	double display();
+
+
+	void print();
 
 	//Destructor
 	~RPNCalculator();
@@ -121,56 +125,68 @@ T  RPNCalculator<T>::pop() {
 		topNum--;
 		return num;
 	}
+	//else if (isEmpty) {
+	//	cout << "You can't delete from an empty stack. Please try again.";
+	//}
 	return topNum;
 }
 
 template <class T>
-double RPNCalculator<T>::add()
+void RPNCalculator<T>::add()
 {
-	double g = pop();
-	double a = pop();
-	double b = pop();
+	double a = value();
+	pop();
+	double b = value();
+	pop();
 	
 	result = a + b;
 	
-	//push(6);
-
-	return result;
+	push(result);
 };
 
 
 template <class T>
-void RPNCalculator<T>::subtract(T a, T b)
+void RPNCalculator<T>::subtract()
 {
 
-	a = pop();
-	b = pop();
+	double a = value();
+	pop();
+	double b = value();
+	pop();
 
 	result = a - b;
 
-	//return result;
+	push(result);
 };
 
 
 template <class T>
-void RPNCalculator<T>::multiply(T a, T b)
+void RPNCalculator<T>::multiply()
 {
 
-	a = pop();
-	b = pop();
+	double a = value();
+	pop();
+	double b = value();
+	pop();
 	
 	result = a * b;
 
+	push(result);
+
 };
 
 
 template <class T>
-void RPNCalculator<T>::divide(T a, T b)
+void RPNCalculator<T>::divide()
 {
-	a = pop();
-	b = pop();
+	double a = value();
+	pop();
+	double b = value();
+	pop();
 
 	result = a / b;
+
+	push(result);
 
 };
 
@@ -188,18 +204,44 @@ void RPNCalculator<T>::clear(){
 template<class T>
 void RPNCalculator<T>::square() {
 	//only square positive numbers
+
+	double toBeSquared;
+	double a = pop() ;
+
+
 }
 
+template<class T>
+T RPNCalculator<T>::value() {
+
+	if (topNum > 0) {
+		return data[topNum - 1];
+	}
+	return 0;
+}
+//template<class T>
+//double RPNCalculator<T>::display() {
+//
+//	double a = pop();
+//	//push(a);
+//
+//	cout << a;
+//	//cout << a;
+//
+//	return a;
+//}
 
 
 template<class T>
-double RPNCalculator<T>::display() {
-
-	double a = pop();
-	push(a);
-	//cout << a;
-
-	return a;
+void RPNCalculator<T>::print() {
+	for (int i = 0; i < topNum; i++) {
+		cout << ">" << data[i];
+	}
+	cout << endl;
 }
 
-
+template <class T>
+void RPNCalculator<T>::clear()
+{
+	topNum = 0;
+}
