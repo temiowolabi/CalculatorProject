@@ -4,6 +4,8 @@ References:
 https://stackoverflow.com/questions/69447591/write-calculation-output-in-a-txt-file
 This stack overflow link helped me with writing to a file.
 
+https://stackoverflow.com/questions/4155537/writing-into-a-text-file-without-overwriting-it
+This stack overflow link showed me how to append items being written to the file so the values won't be overrided by each new calculation.
 
 
 
@@ -58,12 +60,6 @@ public:
 	T value();
 	// returns the topmost value and pops it off the top
 	T pop();
-
-
-	void hey();
-
-	//double result();
-	double display();
 
 
 	void print();
@@ -124,9 +120,6 @@ T  RPNCalculator<T>::pop() {
 	else {
 		clear();
 	}
-	//else if (isEmpty) {
-	//	cout << "You can't delete from an empty stack. Please try again.";
-	//}
 	return topNum;
 }
 
@@ -142,11 +135,10 @@ void RPNCalculator<T>::add()
 	
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
 
-	MyFile << a << "+" << b << "=" << result << endl;
-	//MyFile << a << ' ' << op << ' ' << num2 << " = " << result;
+	//MyFile << a << "+" << b << "=" << result << endl;
 };
 
 
@@ -163,8 +155,9 @@ void RPNCalculator<T>::subtract()
 
 
 
-	ofstream MyFile("RPN.log.txt");
-	MyFile << b << "-" << a << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << b << "-" << a << "=" << result << endl;
 
 	push(result);
 };
@@ -183,8 +176,9 @@ void RPNCalculator<T>::multiply()
 
 	push(result);
 
-	ofstream MyFile("RPN.log.txt");
-	MyFile << a << "*" << b << "=" << result;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "*" << b << "=" << result << endl;
 
 };
 
@@ -201,8 +195,9 @@ void RPNCalculator<T>::divide()
 
 	push(result);
 
-	ofstream MyFile("RPN.log.txt");
-	MyFile << a << "÷" << b << "=" << result;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "÷" << b << "=" << result << endl;
 
 };
 
@@ -221,8 +216,9 @@ void RPNCalculator<T>::square() {
 	double result = a * a;
 	push(result);
 
-	ofstream MyFile("RPN.log.txt");
-	MyFile << a << "²" << "=" << result;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "²" << "=" << result << endl;
 }
 
 
@@ -240,7 +236,9 @@ void RPNCalculator<T>::negate() {
 
 	push(result);
 
-
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "¬" << "=" << result << endl;
 }
 
 
@@ -268,6 +266,8 @@ void RPNCalculator<T>::clear()
 	{
 		pop();
 	}
-	//topNum = 0;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << "Cleared";
 }
 
