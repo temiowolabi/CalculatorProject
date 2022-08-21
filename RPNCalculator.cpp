@@ -1,5 +1,6 @@
 #include "RPNCalculator.h"
 #include <iostream>
+#include <fstream>
 #include <queue>
 #include <sstream>  
 #include <string>
@@ -8,8 +9,8 @@ using namespace std;
 
 
 bool operations(const string& option) {
-	string array[] = { "+", "-", "*", "/", "n"};
-	for (int i = 0; i < 5; i++) {
+	string array[] = { "+", "-", "*", "/", "n", "s"};
+	for (int i = 0; i < 6; i++) {
 		if (option == array[i]) {
 			return true;
 		}
@@ -24,9 +25,13 @@ bool menuStuff() {
 	double num;	
 	string option;
 	string input;
+	string line;
+	ifstream myfile("example.txt");
+
 	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
 	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
 		while (true) {
+
 	functions.print();
 
 	if (functions.value() == 0)
@@ -39,16 +44,20 @@ bool menuStuff() {
 		cin>> input;
 
 
+	//	while (getline(myfile, line)) {
+
+	//}
 
 
 	if (istringstream(input) >> num) {
 		functions.push(num);
 	}
 	else if (operations) {
-		if (option == "q" || option == "Q") {
+
+		if (input == "q" || input == "Q") {
 			exit(0);
 		}
-		else if (option == "c" || option == "C") {
+		else if (input == "c" || input == "C") {
 			//clear topNum
 			//functions.print();
 			//return 0;
@@ -57,6 +66,12 @@ bool menuStuff() {
 			//cout << "Addition has been selected" << endl;
 			//addFunction();
 			functions.add();
+			//while (getline(myfile, input)) {
+
+			//}
+
+			//ofstream MyFile("hey.txt");
+			//MyFile << functions.add();
 			
 		}
 		else if (input == "-")
@@ -72,9 +87,22 @@ bool menuStuff() {
 			//multiplyFunction();
 
 		}
+		else if (input == "/")
+		{
+			functions.divide();
+			//cout << "Multiplication has been selected" << endl;
+			//multiplyFunction();
+
+		}
 		else if (input == "n")
 		{
 			functions.negate();
+			//cout << "Multiplication has been selected" << endl;
+			//multiplyFunction();
+		}
+		else if (input == "s")
+		{
+			functions.square();
 			//cout << "Multiplication has been selected" << endl;
 			//multiplyFunction();
 		}

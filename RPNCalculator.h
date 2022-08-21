@@ -1,10 +1,10 @@
 /*
 References:
 
-From lines 93 to 136 (where the add, minus, multiply and divide functions are implemented)
-the following link was used to help implement that. 
-https://cplusplus.com/forum/general/172260/ In particular, the post by the user Aeck who used the pop
-function in adding operands. After searching on the internet I saw and understood why many others opted for this route.
+https://stackoverflow.com/questions/69447591/write-calculation-output-in-a-txt-file
+This stack overflow link helped me with writing to a file.
+
+
 
 
 */
@@ -142,6 +142,10 @@ void RPNCalculator<T>::add()
 	result = a + b;
 	
 	push(result);
+
+	ofstream MyFile("hey.txt");
+	MyFile << a << "+" << b << "=" << result;
+	//MyFile << a << ' ' << op << ' ' << num2 << " = " << result;
 };
 
 
@@ -155,6 +159,10 @@ void RPNCalculator<T>::subtract()
 	pop();
 
 	result = b - a;
+
+
+	//ofstream MyFile("hey.txt");
+	//MyFile << a << "+" << b << "=" r
 
 	push(result);
 };
