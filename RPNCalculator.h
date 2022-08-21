@@ -15,6 +15,7 @@ This stack overflow link helped me with writing to a file.
 #pragma once
 #include <string>
 #include <iostream>
+#include <sstream>
 using namespace std;
 
 template<class T> 
@@ -58,6 +59,9 @@ public:
 	// returns the topmost value and pops it off the top
 	T pop();
 
+
+	void hey();
+
 	//double result();
 	double display();
 
@@ -67,14 +71,6 @@ public:
 	//Destructor
 	~RPNCalculator();
 };
-
-/*template<class T> struct Node {
-	T value;
-	Node<T>* next;
-	Node() :next(nullptr) {};
-	Node(T t) : value(t), next(nullptr) {}
-};
-*/
 
 template <class T>
 RPNCalculator<T>::RPNCalculator(int i) {
@@ -125,6 +121,9 @@ T  RPNCalculator<T>::pop() {
 		topNum--;
 		return num;
 	}
+	else {
+		clear();
+	}
 	//else if (isEmpty) {
 	//	cout << "You can't delete from an empty stack. Please try again.";
 	//}
@@ -143,8 +142,10 @@ void RPNCalculator<T>::add()
 	
 	push(result);
 
-	ofstream MyFile("hey.txt");
-	MyFile << a << "+" << b << "=" << result;
+	fstream MyFile;
+	MyFile.open("RPN.log.txt", fstream::app);
+
+	MyFile << a << "+" << b << "=" << result << endl;
 	//MyFile << a << ' ' << op << ' ' << num2 << " = " << result;
 };
 
@@ -161,8 +162,9 @@ void RPNCalculator<T>::subtract()
 	result = b - a;
 
 
-	//ofstream MyFile("hey.txt");
-	//MyFile << a << "+" << b << "=" r
+
+	ofstream MyFile("RPN.log.txt");
+	MyFile << b << "-" << a << "=" << result << endl;
 
 	push(result);
 };
@@ -181,6 +183,9 @@ void RPNCalculator<T>::multiply()
 
 	push(result);
 
+	ofstream MyFile("RPN.log.txt");
+	MyFile << a << "*" << b << "=" << result;
+
 };
 
 
@@ -196,6 +201,9 @@ void RPNCalculator<T>::divide()
 
 	push(result);
 
+	ofstream MyFile("RPN.log.txt");
+	MyFile << a << "÷" << b << "=" << result;
+
 };
 
 template<class T>
@@ -203,15 +211,8 @@ bool RPNCalculator<T>::isEmpty() {
 	return topNum == 0;
 }
 
-/*template<class T>
-void RPNCalculator<T>::clear(){
-	while (capacity() > 0)    //until the there is nothing left
-		pop();              //keep popping things out
-}*/
-
 template<class T>
 void RPNCalculator<T>::square() {
-	//only square positive numbers
 
 	double a = value();
 	pop();
@@ -220,13 +221,13 @@ void RPNCalculator<T>::square() {
 	double result = a * a;
 	push(result);
 
-
+	ofstream MyFile("RPN.log.txt");
+	MyFile << a << "²" << "=" << result;
 }
 
 
 template<class T>
 void RPNCalculator<T>::negate() {
-	//only square positive numbers
 
 	double result = value(), a = value();
 	pop();
@@ -251,18 +252,6 @@ T RPNCalculator<T>::value() {
 	}
 	return 0;
 }
-//template<class T>
-//double RPNCalculator<T>::display() {
-//
-//	double a = pop();
-//	//push(a);
-//
-//	cout << a;
-//	//cout << a;
-//
-//	return a;
-//}
-
 
 template<class T>
 void RPNCalculator<T>::print() {
@@ -275,5 +264,10 @@ void RPNCalculator<T>::print() {
 template <class T>
 void RPNCalculator<T>::clear()
 {
-	topNum = 0;
+	while (topNum != 0)
+	{
+		pop();
+	}
+	//topNum = 0;
 }
+

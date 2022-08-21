@@ -9,8 +9,8 @@ using namespace std;
 
 
 bool operations(const string& option) {
-	string array[] = { "+", "-", "*", "/", "n", "s"};
-	for (int i = 0; i < 6; i++) {
+	string array[] = { "+", "-", "*", "/", "n", "s", "p"};
+	for (int i = 0; i < sizeof(array); i++) {
 		if (option == array[i]) {
 			return true;
 		}
@@ -26,10 +26,20 @@ bool menuStuff() {
 	string option;
 	string input;
 	string line;
-	ifstream myfile("example.txt");
 
 	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
-	cout << "The operations avaiable are: '+' '-' '*' '/' '^' ('c' or 'clear') ('q' or 'quit') " << endl;
+	cout << "D00227197: " << endl;
+	cout << "SD3A: " << endl;
+	cout << "The operations avaiable are: 'Addition (+), ' 'Subtraction (-), ' 'Multiplication (*) & ' 'Division (/)' " << endl;
+	//cout << "Would you like to see the other available commands? " << endl;
+
+
+	cout << "(1) Entering s will square the value.  " << endl;
+	cout << "(2) Entering n will negate the value.  " << endl;
+	cout << "(3) Entering p will pop (remove) the current value off the stack. " << endl;
+	cout << "(4) Entering c will clear the calculator’s stack.  " << endl;
+	cout << "(5) Enter Q to quit. " << endl;
+
 		while (true) {
 
 	functions.print();
@@ -44,10 +54,6 @@ bool menuStuff() {
 		cin>> input;
 
 
-	//	while (getline(myfile, line)) {
-
-	//}
-
 
 	if (istringstream(input) >> num) {
 		functions.push(num);
@@ -58,53 +64,34 @@ bool menuStuff() {
 			exit(0);
 		}
 		else if (input == "c" || input == "C") {
-			//clear topNum
-			//functions.print();
-			//return 0;
+			functions.clear();
 		}
 		else if (input == "+") {
-			//cout << "Addition has been selected" << endl;
-			//addFunction();
-			functions.add();
-			//while (getline(myfile, input)) {
-
-			//}
-
-			//ofstream MyFile("hey.txt");
-			//MyFile << functions.add();
-			
+			functions.add();			
 		}
 		else if (input == "-")
 		{
-			//cout << "Subtraction has been selected" << endl;
-			//minusFunction();
 			functions.subtract();
 		}
 		else if (input == "*")
 		{
 			functions.multiply();
-			//cout << "Multiplication has been selected" << endl;
-			//multiplyFunction();
-
 		}
 		else if (input == "/")
 		{
 			functions.divide();
-			//cout << "Multiplication has been selected" << endl;
-			//multiplyFunction();
-
 		}
 		else if (input == "n")
 		{
 			functions.negate();
-			//cout << "Multiplication has been selected" << endl;
-			//multiplyFunction();
 		}
 		else if (input == "s")
 		{
 			functions.square();
-			//cout << "Multiplication has been selected" << endl;
-			//multiplyFunction();
+		}
+		else if (input == "p")
+		{
+			functions.pop();
 		}
 	}
 
