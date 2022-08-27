@@ -52,7 +52,6 @@ public:
 	// pushes a new operand onto the stack
 	bool push(T operand);
 
-	bool isFull();
 	// binary operators:
 	void add();
 	void subtract();
@@ -107,17 +106,6 @@ bool RPNCalculator<T>::push(T result) {
 	return false;
 }
 
-
-template <class T>
-bool RPNCalculator<T>::isFull() {
-
-	if (topNum == 19) {
-		return true;
-	}
-	else {
-		return false;
-	}
-}
 
 
 //This function removes values from the top of the stack
