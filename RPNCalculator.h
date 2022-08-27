@@ -242,6 +242,7 @@ void RPNCalculator<T>::negate() {
 }
 
 
+
 template<class T>
 T RPNCalculator<T>::value() {
 
