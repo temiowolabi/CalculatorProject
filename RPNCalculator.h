@@ -1,4 +1,14 @@
 /*
+* 
+* 
+* 
+* This file contains the implementation for the stack. It contains the following functions:
+* - Push 
+* - isEmpty
+* - Clear 
+* - Pop
+* 
+
 References:
 
 https://stackoverflow.com/questions/69447591/write-calculation-output-in-a-txt-file
@@ -83,6 +93,8 @@ RPNCalculator<T>::~RPNCalculator()
 	delete[] data;
 }
 
+
+//This function adds values to the top of the stack.
 template <class T>
 bool RPNCalculator<T>::push(T result) {
 
@@ -108,7 +120,7 @@ bool RPNCalculator<T>::isFull() {
 }
 
 
-
+//This function removes values from the top of the stack
 template<class T>
 T  RPNCalculator<T>::pop() {
 	if (topNum > 0)
@@ -201,6 +213,7 @@ void RPNCalculator<T>::divide()
 
 };
 
+//This function lets you know if the stack is empty or not.
 template<class T>
 bool RPNCalculator<T>::isEmpty() {
 	return topNum == 0;
@@ -243,6 +256,7 @@ void RPNCalculator<T>::negate() {
 
 
 
+//This function returns the value at the top of the stack.
 template<class T>
 T RPNCalculator<T>::value() {
 
@@ -252,6 +266,8 @@ T RPNCalculator<T>::value() {
 	return 0;
 }
 
+
+//This function prints the value of the top number in the stack.
 template<class T>
 void RPNCalculator<T>::print() {
 	for (int i = 0; i < topNum; i++) {
@@ -260,6 +276,8 @@ void RPNCalculator<T>::print() {
 	cout << endl;
 }
 
+
+//This function clears the stack.
 template <class T>
 void RPNCalculator<T>::clear()
 {

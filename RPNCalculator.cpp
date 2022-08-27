@@ -8,6 +8,7 @@ using namespace std;
 
 
 
+//This function is used for checking the operation options for the calculator
 bool operations(const string& option) {
 	string array[] = { "+", "-", "*", "/", "n", "s", "p"};
 	for (int i = 0; i < sizeof(array); i++) {
@@ -17,6 +18,9 @@ bool operations(const string& option) {
 		return false;
 	}
 }
+
+
+
 
 
 bool menuStuff() {
@@ -31,8 +35,6 @@ bool menuStuff() {
 	cout << "D00227197: " << endl;
 	cout << "SD3A: " << endl;
 	cout << "The operations avaiable are: 'Addition (+), ' 'Subtraction (-), ' 'Multiplication (*) & ' 'Division (/)' " << endl;
-	//cout << "Would you like to see the other available commands? " << endl;
-
 
 	cout << "(1) Entering s will square the value.  " << endl;
 	cout << "(2) Entering n will negate the value.  " << endl;
@@ -54,6 +56,14 @@ bool menuStuff() {
 		cin>> input;
 
 
+
+		 //The following function checks if the input is a string or integer.
+		 //The user adds numbers and the loop will keep going until 
+		// 1) The user inputs 'q' to quit
+		// 2) The user inputs 'c' to clear the stack
+		// 3) The user picks one of the operands to complete the equation
+
+		//Essentially until it no longer detects an integer
 
 	if (istringstream(input) >> num) {
 		functions.push(num);
