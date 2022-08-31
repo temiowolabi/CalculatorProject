@@ -1,13 +1,13 @@
 /*
-*
-*
-*
+* 
+* 
+* 
 * This file contains the implementation for the stack. It contains the following functions:
-* - Push
+* - Push 
 * - isEmpty
-* - Clear
+* - Clear 
 * - Pop
-*
+* 
 
 References:
 
@@ -30,7 +30,7 @@ This stack overflow link showed me how to append items being written to the file
 #include <sstream>
 using namespace std;
 
-template<class T>
+template<class T> 
 class RPNCalculator
 
 {
@@ -131,15 +131,15 @@ void RPNCalculator<T>::add()
 	pop();
 	double b = value();
 	pop();
-
+	
 	result = a + b;
-
+	
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
 
-	MyFile << a << "+" << b << "=" << result << endl;
+	//MyFile << a << "+" << b << "=" << result << endl;
 };
 
 
@@ -156,9 +156,9 @@ void RPNCalculator<T>::subtract()
 
 
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
-	MyFile << b << "-" << a << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << b << "-" << a << "=" << result << endl;
 
 	push(result);
 };
@@ -172,14 +172,14 @@ void RPNCalculator<T>::multiply()
 	pop();
 	double b = value();
 	pop();
-
+	
 	result = a * b;
 
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
-	MyFile << a << "*" << b << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "*" << b << "=" << result << endl;
 
 };
 
@@ -196,9 +196,9 @@ void RPNCalculator<T>::divide()
 
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
-	MyFile << a << "÷" << b << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "÷" << b << "=" << result << endl;
 
 };
 
@@ -218,9 +218,9 @@ void RPNCalculator<T>::square() {
 	double result = a * a;
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
-	MyFile << a << "²" << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "²" << "=" << result << endl;
 }
 
 
@@ -238,9 +238,9 @@ void RPNCalculator<T>::negate() {
 
 	push(result);
 
-	fstream MyFile;
-	MyFile.open("RPN.log.txt", fstream::app);
-	MyFile << a << "¬" << "=" << result << endl;
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << a << "¬" << "=" << result << endl;
 }
 
 
@@ -274,5 +274,8 @@ void RPNCalculator<T>::clear()
 	{
 		pop();
 	}
+	//fstream MyFile;
+	//MyFile.open("RPN.log.txt", fstream::app);
+	//MyFile << "Cleared";
 }
 
