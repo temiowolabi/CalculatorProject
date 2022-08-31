@@ -4,6 +4,7 @@
 #include <queue>
 #include <sstream>  
 #include <string>
+#include <regex>
 using namespace std;
 
 
@@ -30,6 +31,7 @@ bool menuStuff() {
 	string option;
 	string input;
 	string line;
+	regex regex_pattern("-?[0-9]+.?[0-9]+");
 
 	cout << "Welcome to Temi Owolabi's RPN Calculator: " << endl;
 	cout << "D00227197: " << endl;
@@ -102,6 +104,9 @@ bool menuStuff() {
 		else if (input == "p")
 		{
 			functions.pop();
+		}
+		else {
+			cout << "Error, invalid input " << endl;
 		}
 	}
 
